@@ -1,0 +1,72 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username":"adminad",
+    "password": "adminad"
+}
+
+###
+# login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username":"khanhduy1",
+    "password": "khanhduy"
+}
+
+###
+
+POST http://localhost:5000/cart/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmZTNiMTI0NmM5OTU4YWI4ZTY1YzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NzM1MzkxN30.r0uHZQCuT4jM-j2WT4w0MqgTwztO0zL2oZTf1QghS7Y
+
+{
+    "productId": "636134dce612e99e5adf01ba",
+    "quanlity": 1
+}
+
+### get cart
+GET http://localhost:5000/cart/get
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmZTNiMTI0NmM5OTU4YWI4ZTY1YzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NzMxODkwM30.cqrf7hBf1eocTh59r4Ze73vDh9tslaYraD2NxrT8e4Q
+
+###
+
+PUT http://localhost:5000/cart/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmZTNiMTI0NmM5OTU4YWI4ZTY1YzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NzM1MzkxN30.r0uHZQCuT4jM-j2WT4w0MqgTwztO0zL2oZTf1QghS7Y
+
+{
+    "productId": "636134dce612e99e5adf01ba",
+    "quanlity": 3
+}
+
+### delete
+
+DELETE  http://localhost:5000/cart/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmZTNiMTI0NmM5OTU4YWI4ZTY1YzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NzM1MzkxN30.r0uHZQCuT4jM-j2WT4w0MqgTwztO0zL2oZTf1QghS7Y
+
+{
+    "productId": "636134dce612e99e5adf01ba"
+}
+
+### addmin add product
+POST http://localhost:5000/admin/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmZTNiMTI0NmM5OTU4YWI4ZTY1YzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2ODMyNjAwMX0.42VLdj-ais3cp5rrSEerbP4BRuQGdMY4tUWUsJhSS0U
+
+{
+    "name":"bbject",
+    "description": "lamp",
+    "url": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80",
+    "price": 10000,
+    "type": "some thing"
+}
+
+###
+GET http://localhost:5000/admin/get/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzYxZTMyODg4MDE1YmQ0ZTBkN2IzNjYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2Njg5MTIxNjF9.tx08loQahvgnvDY8cWmZfYsLDUhPxGndEENebsSaKUg

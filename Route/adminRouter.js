@@ -1,0 +1,15 @@
+const express = require('express')
+const adminController = require('../Controller/adminController')
+const router = express.Router()
+const checkAdmin = require('../middlewares/adminMiddelware')
+const verifyToken = require('../middlewares/authMiddleware')
+const productController = require('../Controller/productController')
+const multer  = require('multer')
+const upload = multer({ dest: './public/furniteUploads' })
+
+router.post('/order/confirm/:productId', verifyToken, checkAdmin, adminController.confirmOrder)
+router.post('/create',verifyToken,checkAdmin, upload.array('avatars', 5), adminController.postProduct)
+router.post('/update',verifyToken,checkAdmin, upload.array('avatars', 5), adminController.updateProduct)
+router.get('/get/:page',verifyToken, productController.getProducts )
+router.get('/orders/get',verifyToken,checkAdmin, productController.getOrdersAll)
+module.exports = router
