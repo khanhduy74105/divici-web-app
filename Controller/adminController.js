@@ -1,6 +1,6 @@
 const Product = require('../Model/Product')
 const Order = require('../Model/Order')
-const { unlink } = require('node:fs/promises')
+const { unlink } = require('fs/promises')
 class adminController {
 
     async postProduct(req, res){
