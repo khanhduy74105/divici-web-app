@@ -3,7 +3,7 @@ const Order = require('../Model/Order')
 const Cart = require('../Model/Cart')
 const User = require('../Model/User')
 const bcrypts = require('bcryptjs')
-// const { unlink } = require('node:fs').promises
+const { unlink } = require('node:fs/promises')
 
 class userController{
     async comment(req, res){
@@ -80,11 +80,11 @@ class userController{
             const imagePath = file.destination.split('/')[2] +'/'+file.filename
             const userA = await User.findOneAndUpdate({_id: req.userId}, {avatar: imagePath})
             try {
-                // await unlink(`./public/${userA.oldImage}`)
+                await unlink(`./public/${userA.avatar}`)
+                res.json({message: 'Change Avatar success', success: true,userA})
             } catch (error) {
-                
+                res.json({message: `Unlink false}`, success: false,userA})
             }
-            res.json({message: 'Change avatar success', success: true})
         } catch (error) {
             res.json({message: 'Change avatar falied', success: false})
         }
