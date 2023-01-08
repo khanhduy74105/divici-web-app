@@ -2,7 +2,7 @@ const Comment = require('../Model/Comment')
 const Order = require('../Model/Order')
 const Cart = require('../Model/Cart')
 const User = require('../Model/User')
-const bcrypts = require('bcrypt')
+const bcrypts = require('bcryptjs')
 const { unlink } = require('node:fs/promises')
 
 class userController{

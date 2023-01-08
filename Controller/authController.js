@@ -1,6 +1,6 @@
 const User = require("../Model/User");
 const jwt = require("jsonwebtoken");
-const bcrypts = require('bcrypt')
+const bcrypts = require('bcryptjs')
 class authController {
   async register(req, res) {
     const { username, password } = req.body;
@@ -19,7 +19,6 @@ class authController {
           message: "Already username",
         });
       }
-
       const salt = await bcrypts.genSalt(10);
       const hashed = await bcrypts.hash(password, salt);
       User.create({
