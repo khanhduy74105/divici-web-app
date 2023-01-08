@@ -1,6 +1,6 @@
 const Product = require('../Model/Product')
 const Order = require('../Model/Order')
-const { unlink } = require('node:fs').promises
+// const { unlink } = require('node:fs').promises
 class adminController {
 
     async postProduct(req, res){
@@ -31,7 +31,7 @@ class adminController {
             let updatedProduct
             if (files.length > 0) {
                 listImage.forEach(async imagePath => {
-                    await unlink(`./public/${imagePath}`)
+                    // await unlink(`./public/${imagePath}`)
                 });
                 files.forEach(file => {
                 const imagePath = file.destination.split('/')[2] +'/'+file.filename
