@@ -4,7 +4,6 @@ const bcrypts = require('bcryptjs')
 class authController {
   async register(req, res) {
     const { username, password } = req.body;
-
     if (!username || !password) {
       return res.status(400).json({
         success: false,
@@ -12,7 +11,7 @@ class authController {
       });
     }
     try {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username: username });
       if (user){
         return res.status(400).json({
           success: false,
@@ -35,8 +34,8 @@ class authController {
         } else {
           const accessToken = jwt.sign(
             {
-              userId: newUser._id,
-              role: newUser.role
+              userId: user._id,
+              role: user.role
             },
             process.env.ASSCESS_SECRET_KEY
           );
@@ -47,9 +46,6 @@ class authController {
               success: true,
               message: "Register account successfully!"
             });
-            res
-            .status(201)
-            .json(user)
         }
     })
       
@@ -57,6 +53,7 @@ class authController {
       res.status(500).json({ success: false, message: "Failled register!" , error: error});
     }
   }
+  
 
   async login (req, res) {
     const { username, password } = req.body;
